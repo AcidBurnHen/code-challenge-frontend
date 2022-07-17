@@ -1,70 +1,13 @@
-# Getting Started with Create React App
+# Frontend Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- I started off by installing react router and configuring basic routing with placeholder components. As the user needs to log into the app before visiting the protected route I first decided to work on the login page. I added Axios as the http client to interact with the backend API. To be able test out if the submit works with axios to the login api I set the port of this react app in package.json to 5000, and set the proxy which will send the requests to my localhost on port 3000 where backend server is running. Proxying is only used during development, so I wouldn't use this for deployed apps.  
 
-## Available Scripts
+- I decided to store the value of email and password in state with onChange events in the input form. And then submitted that data to the api with a POST request using axios. Since the encoder page needs to be protected from unauthorized users, I decided to create isLoggedIn and authToken state in App.js. So I can re-use it in other components. If this was a bigger app that required more state handling, then I would have used a library like Redux or Immer, but for this simple coding app challenge, I did not think it was neccessary.
 
-In the project directory, you can run:
+- I stored the authtoken just as it is for this challenge since the login API is written like that, usually I would use sessions or jwts on the backend/server for the authorization process if this part was required from me.  
 
-### `npm start`
+- Next, I started thinking about the input validation of the form, I decided to use a regex to check if the email is valid by searching to see if there is a dot after @, I am only checking for this because I know that when I use input type email, it has it's own native validation to check if the email is properly formatted. And it will show the user an error if he forgots to include @, but doesn't do that if there is a . missing. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- I created a homepage that is shown to logged in users and has a link to the encode page for the user to navigate to. The encode page is also protected from unregistered users. Just like the login page, I used axios to make a POST request to API. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Created an additional component for displaying error messages to the user. 

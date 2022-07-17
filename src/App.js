@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+
+import EncodePage from './components/EncodePage';
+import LoginPage from './components/LoginPage';
+import HomePage from './components/HomePage';
 
 function App() {
+  /* Using state to check if user is logged in */
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  /* Using state to store validation token coming from backend */
+  const [authToken, setAuthToken] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        path='/'
+        element={
+          /* If user is logged in he will see the homepage, if he is not he will see the login page */
+          isLoggedIn ? (
+            <HomePage setIsLoggedIn={setIsLoggedIn} />
+          ) : (
+            <LoginPage
+              setIsLoggedIn={setIsLoggedIn}
+              setAuthToken={setAuthToken}
+            />
+          )
+        }
+      />
+      <Route
+        path='/encode'
+        element={<EncodePage isLoggedIn={isLoggedIn} authToken={authToken} />}
+      />
+    </Routes>
   );
 }
 
