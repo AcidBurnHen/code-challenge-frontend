@@ -1,0 +1,88 @@
+@import "./mixins.scss";
+
+.login-page {
+  display: flex;
+  align-items: center;
+  height: 629px;  
+
+  &__form-container {
+    border: 1px solid white;
+    color: #ffffff;
+    border-radius: 4rem;
+    height: 350px;
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include atTiny {
+      width: 18.75rem;
+    }
+
+    @include atSmaller {
+      width: 21.875rem;
+    }
+
+    @include atSmall {
+     width: 25rem;
+    }
+  }
+
+
+  &__form {
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(5, 1.6rem);
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+    row-gap: 2rem;
+  }
+
+  &__title, &__subtitle {
+    text-align: center;
+  }
+
+  &__email,
+  &__password {
+    width: 2rem;
+    display: grid;
+
+    @include atSmall {
+      width: 20rem;
+    }
+
+    input {
+      margin-left: 1rem;
+      width: 7rem;
+      grid-column: 2;
+      border: 1px solid lightgrey;
+      border-radius: 1.2rem;
+      padding: 3px;
+
+      @include atSmaller {
+        width: 9rem;
+      }
+
+      @include atSmall {
+        width: 13rem;
+        margin-left: 0;
+      }
+
+      &:focus {
+        outline: 1px solid #250909;
+        background-color: transparent;
+        color: white;
+      
+      }
+    }
+  }
+
+  &__email input {
+    margin-left: 2.6rem;
+
+    @include atSmall {
+      margin-left: 1.7rem;
+    }
+  }
+
+}

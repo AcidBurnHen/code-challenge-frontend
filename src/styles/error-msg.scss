@@ -1,0 +1,19 @@
+@import "./mixins.scss";
+
+.error-msg {
+  font-size: 0.8rem;
+  margin: 0 0.7rem;
+  position: absolute;
+  top: 9rem;
+  background-color: red;
+  border-radius: 10px;
+  padding: 0 1rem;
+
+  @include atTiny {
+    top: 10rem;
+  }
+
+  @include atSmall {
+    font-size: 0.8rem
+  }
+}

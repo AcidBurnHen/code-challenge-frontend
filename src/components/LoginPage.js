@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
+import '../styles/login-page.scss';
+import "../styles/btn.scss";
 
 function LoginPage({ setIsLoggedIn, setAuthToken }) {
   /* On change events will set the value of email and password which is then stored in state */
@@ -43,32 +45,42 @@ function LoginPage({ setIsLoggedIn, setAuthToken }) {
       /* Passing the token for encode page to use in it's post request */
       setAuthToken(res.data.token);
       /* Remove error messages if there were any after successful try */
-      setErrMsg()
+      setErrMsg();
     } catch (err) {
       console.log(err);
     }
   }
 
   return (
-    <div>
+    <div className='login-page'>
       <ErrorMessage errMsg={errMsg} />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='email'>Email</label>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          type='email'
-          id='email'
-          name='email'
-        />
-        <label htmlFor='password'>Password</label>
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          type='password'
-          id='password'
-          name='password'
-        />
-        <button>Login</button>
-      </form>
+      <div className='login-page__form-container'>
+        <form className='login-page__form' onSubmit={handleSubmit}>
+          <h2 className='login-page__title'>Welcome Back!</h2>
+          <p className='login-page__subtitle'>
+            Please log in to view this page
+          </p>
+          <div className='login-page__email'>
+            <label htmlFor='email'>Email</label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type='email'
+              id='email'
+              name='email'
+            />
+          </div>
+          <div className='login-page__password'>
+            <label htmlFor='password'>Password</label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type='password'
+              id='password'
+              name='password'
+            />
+          </div>
+          <button className='btn'>Login</button>
+        </form>
+      </div>
     </div>
   );
 }

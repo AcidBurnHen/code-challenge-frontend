@@ -8,6 +8,8 @@
 
 - Next, I started thinking about the input validation of the form, I decided to use a regex to check if the email is valid by searching to see if there is a dot after @, I am only checking for this because I know that when I use input type email, it has it's own native validation to check if the email is properly formatted. And it will show the user an error if he forgots to include @, but doesn't do that if there is a . missing. 
 
-- I created a homepage that is shown to logged in users and has a link to the encode page for the user to navigate to. The encode page is also protected from unregistered users. Just like the login page, I used axios to make a POST request to API. 
+- I created a homepage that is shown to logged in users and has a link to the encode page for the user to navigate to. The encode page is also protected from unregistered users. Just like the login page, I used axios to make a POST request to API. I decided to add two validations on the frontend for the encode page, and that was to show an error message if the text contains symbols, or if it contains digits.
 
 - Created an additional component for displaying error messages to the user. 
+
+- I decided to do minimalistic design for this app with all the content  centered in the middle of the page, I want the focus to be on the little content there is, since this is not a very complex app, with a lot of functonalities.

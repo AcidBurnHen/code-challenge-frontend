@@ -1,0 +1,55 @@
+@import "./mixins.scss";
+
+.encode-page {
+  height: 607px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__no-login {
+    font-size: 1.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: rgba(145, 40, 32, 0.959);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__form {
+    display: grid;
+    align-items: center;
+    grid-template-rows: repeat(3, 1rem);
+    row-gap: 2rem;
+  }
+
+  &__input {
+    border: 1px solid lightgrey;
+    border-radius: 1.2rem;
+    padding: 3px;
+
+    &:focus {
+      outline: 1px solid #250909;
+      background-color: transparent;
+      color: white;
+    
+    }
+  }
+
+  &__result {
+    position: absolute;
+    margin: 0 1rem;
+    bottom: 13rem;
+    background-color: green;
+    padding: 0.2rem 1rem;
+    border-radius: 1.2rem;
+
+    @include atTiny {
+      
+    }
+  }
+}

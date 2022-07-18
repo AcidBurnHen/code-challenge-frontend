@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
+import '../styles/encode-page.scss';
+import '../styles/btn.scss';
 
 function EncodePage({ isLoggedIn, authToken }) {
   /* Using onChange event to to store text in state before sending an API request */
@@ -11,7 +13,7 @@ function EncodePage({ isLoggedIn, authToken }) {
   const [errMsg, setErrMsg] = useState();
 
   /* Checking to see if the user is logged in */
-  if (!isLoggedIn) {
+  if (isLoggedIn) {
     async function handleSubmit(e) {
       e.preventDefault();
 
@@ -26,51 +28,59 @@ function EncodePage({ isLoggedIn, authToken }) {
       /* Passing the token to the request headers as it is expected in the authorization middleware */
       const config = {
         headers: {
-          authorization: "xyz0987654321",
+          authorization: 'xyz0987654321',
         },
       };
 
       try {
         const res = await axios.post('/encode', { text }, config);
         /* If the api responds with a success I store the response in state */
-        if (res.status === 200) 
-        setEncodedText(res.data.encodedString);
-        setErrMsg()
+        if (res.status === 200) setEncodedText(res.data.encodedString);
+        setErrMsg();
       } catch (err) {
         console.log(err);
       }
     }
 
     return (
-      <div>
-        <h2>Encode Some Text</h2>
+      <div className='encode-page'>
         <ErrorMessage errMsg={errMsg} />
-        <form onSubmit={handleSubmit}>
-          <label htmlFor='text'>Text to encode:</label>
+        <form className='encode-page__form' onSubmit={handleSubmit}>
+          <h2 className='encode-page__title'>Encode Some Text</h2>
+
           <input
+          className="encode-page__input"
             onChange={(e) => setText(e.target.value)}
             type='text'
             id='text'
             name='text'
           />
-          <button>Encode</button>
+
+          <button className='btn'>Encode</button>
         </form>
 
-        <p>
+        
           {
             /* If the api returns encoded text it will be shown, otherwise user won't see anything */
-            encodedText !== '' ? `Result: ${encodedText}` : ''
+            encodedText !== '' ? (
+              <p className="encode-page__result">Result: {encodedText}</p>) : ''
           }
-        </p>
+
       </div>
     );
   }
 
   /* If user somehow navigates to this page before logging in, they will see this instead of the encode form */
   return (
-    <p>
-      Please <Link to='/'>log in</Link> to view this page
-    </p>
+    <div className='encode-page'>
+      <p className='encode-page__no-login'>
+        Please{' '}
+        <Link className='encode-page__link' to='/'>
+          log in
+        </Link>{' '}
+        to view this page
+      </p>
+    </div>
   );
 }
 

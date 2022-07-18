@@ -1,0 +1,13 @@
+.btn {
+    justify-self: center;
+    width: 10rem;
+    border-radius: 2.5rem;
+    border: 1px solid white;
+    color: #250909;
+    background-color: white;
+
+  &:hover {
+    background-color: transparent;
+    color: white;
+  }
+}
