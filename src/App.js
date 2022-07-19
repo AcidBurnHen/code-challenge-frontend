@@ -16,15 +16,16 @@ function App() {
       <Route
         path='/'
         element={
-          /* If user is logged in he will see the homepage, if he is not he will see the login page */
-          isLoggedIn ? (
-            <HomePage setIsLoggedIn={setIsLoggedIn} />
-          ) : (
-            <LoginPage
-              setIsLoggedIn={setIsLoggedIn}
-              setAuthToken={setAuthToken}
-            />
-          )
+          <HomePage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        }
+      />
+      <Route
+        path='/login'
+        element={
+          <LoginPage
+            setIsLoggedIn={setIsLoggedIn}
+            setAuthToken={setAuthToken}
+          />
         }
       />
       <Route

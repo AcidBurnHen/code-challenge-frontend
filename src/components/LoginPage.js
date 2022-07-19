@@ -57,9 +57,9 @@ function LoginPage({ setIsLoggedIn, setAuthToken }) {
       <div className='login-page__form-container'>
         <form className='login-page__form' onSubmit={handleSubmit}>
           <h2 className='login-page__title'>Welcome Back!</h2>
-          <p className='login-page__subtitle'>
+          <h3 className='login-page__subtitle'>
             Please log in to view this page
-          </p>
+          </h3>
           <div className='login-page__email'>
             <label htmlFor='email'>Email</label>
             <input

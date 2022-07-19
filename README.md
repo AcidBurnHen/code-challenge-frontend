@@ -13,3 +13,5 @@
 - Created an additional component for displaying error messages to the user. 
 
 - I decided to do minimalistic design for this app with all the content  centered in the middle of the page, I want the focus to be on the little content there is, since this is not a very complex app, with a lot of functonalities.
+
+- I decided to remove the conditional rendering of components inside of the home route and created a new route /login , if the user is not logged in he will be redirected to the login page. 
